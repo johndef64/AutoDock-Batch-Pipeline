@@ -1,9 +1,0 @@
-Docking Results for P23219 - 2244
-==================================================
-
-Binding energies (kcal/mol):
-Pose 1: -5.395
-Pose 2: -5.393
-Pose 3: -5.302
-Pose 4: -5.240
-Pose 5: -5.118
