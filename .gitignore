@@ -1,0 +1,7 @@
+docker_results/*
+ligand_structures/*
+receptor_structures/*
+pdb_converters/*
+misc/*
+note.md
+__pycache__/
