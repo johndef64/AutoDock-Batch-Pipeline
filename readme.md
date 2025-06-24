@@ -1,6 +1,6 @@
 # Molecular Docking Pipeline
 
-An automated pipeline for batch molecular docking using AutoDock Vina, enabling docking simulations starting from UniProt IDs for receptors and PubChem IDs for ligands.
+An automated pipeline for batch molecular docking using AutoDock Vina, enabling docking simulations starting from **UniProt IDs** for receptors and **PubChem IDs** for ligands.
 
 ## Features
 
@@ -47,7 +47,8 @@ pip install rdkit vina
 
 ```
 molecular-docking-pipeline/
-├── main_docking.py          # Main script
+├── autodock.py          # Main script
+├── batch_docking.py        # Batch processing script
 ├── meeko_converter.py       # Module for Meeko conversion
 ├── get_pdbs.py             # Module for structure downloads
 ├── ligand_structures/       # Directory for ligand structures
@@ -60,13 +61,13 @@ molecular-docking-pipeline/
 ### Basic Execution
 
 ```bash
-python main_docking.py
+python autodock.py
 ```
 
 ### Execution with Custom Parameters
 
 ```bash
-python main_docking.py --receptor P23219 --ligand 60961
+python autodock.py --receptor P23219 --ligand 60961
 ```
 
 ### Available Parameters
@@ -117,6 +118,28 @@ Pose 3: -7.634
 Pose 4: -7.289
 Pose 5: -6.957
 ```
+
+## Batch Processing
+
+For processing multiple receptor-ligand pairs, use the batch docking script:
+
+### Pairwise Mode (1:1)
+```bash
+python batch_docking.py --receptors P23219 P21728 P29274 --ligands 60961 2244 12345
+```
+
+### All vs All Mode (Cartesian)
+```bash
+python batch_docking.py --receptors P23219 P21728 --ligands 60961 2244 --mode all_vs_all
+```
+
+### Batch Parameters
+- `--receptors`: Space-separated list of UniProt IDs
+- `--ligands`: Space-separated list of PubChem IDs  
+- `--mode`: `pairwise` (default) or `all_vs_all`
+- `--output`: Results summary file (default: `batch_results.txt`)
+
+The batch script automatically runs `autodock.py` for each receptor-ligand combination and generates a comprehensive results summary.
 
 ## Advanced Configuration
 
